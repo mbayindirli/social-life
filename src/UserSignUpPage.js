@@ -22,7 +22,7 @@ displayName:this.state.displayName,
 password:this.state.password
 }
 
-axios.post('http://localhost:8080/api/1.0/users',user);
+axios.post('/api/1.0/users',user);
 }
 
 //her class component render fonksionunu illaki owerride etmeli
