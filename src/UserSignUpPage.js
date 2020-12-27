@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 //class component(StateFull)Durum barındıran
 class UserSignUpPage extends React.Component{
 state={
@@ -12,6 +13,16 @@ const{name,value}=event.target
 this.setState({
 [name]:value
 })
+}
+onClickSignUp=event=>{
+event.preventDefault();//Browser form elemanlarını bizim yerimize bir yere göndermesinin önüne geçmek için kullanılır.Bu sayede durdurmuş oluyoruz
+const user={
+username:this.state.username,
+displayName:this.state.displayName,
+password:this.state.password
+}
+
+axios.post('http://localhost:8080/api/1.0/users',user);
 }
 
 //her class component render fonksionunu illaki owerride etmeli
@@ -35,7 +46,7 @@ render(){return(
           <input name ="passwordRepeat" type="password" onChange={this.onChange}/>
    </div>
    <div>
-    <button>Sign Up</button>
+    <button onClick={this.onClickSignUp}>Sign Up</button>
    </div>
   </form>
 );}
