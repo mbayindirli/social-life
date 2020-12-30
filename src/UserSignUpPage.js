@@ -27,28 +27,30 @@ axios.post('/api/1.0/users',user);
 
 //her class component render fonksionunu illaki owerride etmeli
 render(){return(
+<div className="container">
 <form>
   <h1 align= "center">Sign Up</h1>
-  <div>
+  <div className="form-group">
    <label>Username</label>
-   <input name="username" onChange={this.onChange} />
+   <input className="form-control" name="username" onChange={this.onChange} />
   </div>
-  <div>
+  <div className="form-group">
      <label>Display Name</label>
-     <input name="displayName" onChange={this.onChange}/>
+     <input className="form-control" name="displayName" onChange={this.onChange}/>
   </div>
-   <div>
+   <div className="form-group">
        <label>Password</label>
-       <input name="password" type="password" onChange={this.onChange}/>
+       <input className="form-control" name="password" type="password" onChange={this.onChange}/>
    </div>
-   <div>
+   <div className="form-group">
           <label>Repeat Password</label>
-          <input name ="passwordRepeat" type="password" onChange={this.onChange}/>
+          <input className="form-control" name ="passwordRepeat" type="password" onChange={this.onChange}/>
    </div>
-   <div>
-    <button onClick={this.onClickSignUp}>Sign Up</button>
+   <div className="text-center">
+    <button className="btn btn-info" onClick={this.onClickSignUp}>Sign Up</button>
    </div>
   </form>
+    </div>
 );}
 }
 export default UserSignUpPage;
