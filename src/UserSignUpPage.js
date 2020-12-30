@@ -47,7 +47,7 @@ render(){return(
           <input className="form-control" name ="passwordRepeat" type="password" onChange={this.onChange}/>
    </div>
    <div className="text-center">
-    <button className="btn btn-info" onClick={this.onClickSignUp}>Sign Up</button>
+    <button className="primary" onClick={this.onClickSignUp}>Sign Up</button>
    </div>
   </form>
     </div>
