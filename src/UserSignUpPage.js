@@ -6,7 +6,8 @@ state={
 username:null,
 displayName:null,
 password:null,
-passwordRepeat:null
+passwordRepeat:null,
+pandingApiCall:false
 }
 onChange=event=>{
 const{name,value}=event.target
@@ -21,9 +22,15 @@ username:this.state.username,
 displayName:this.state.displayName,
 password:this.state.password
 }
+this.setState({pandingApiCall:true});
+axios.post('/api/1.0/users',user).then((response)=>{
+this.setState({pandingApiCall:false});
+}).catch(error=>{//javascript asenkron calışır backendten cevabı beklemeden diğer kod satırını işler bundan dolayı
+//istek sonrası işlemin gerçekleşip gerçekleşmediğini farklı şekilde axios sonrası catch ya da then ile yakalarız
+this.setState({pandingApiCall:false});
+});
+};
 
-axios.post('/api/1.0/users',user);
-}
 
 //her class component render fonksionunu illaki owerride etmeli
 render(){return(
@@ -47,7 +54,10 @@ render(){return(
           <input className="form-control" name ="passwordRepeat" type="password" onChange={this.onChange}/>
    </div>
    <div className="text-center">
-    <button className="primary" onClick={this.onClickSignUp}>Sign Up</button>
+    <button disabled={this.state.pandingApiCall} className="primary" onClick={this.onClickSignUp}>
+         {this.state.pandingApiCall?<span className="spinner-border spinner-border-sm"></span>:''}
+         Sign Up
+    </button>
    </div>
   </form>
     </div>
