@@ -1,5 +1,5 @@
 import React from 'react';
-import axios from 'axios';
+import {signup} from '../api/apiCalls'
 //class component(StateFull)Durum barındıran
 class UserSignUpPage extends React.Component{
 state={
@@ -15,20 +15,26 @@ this.setState({
 [name]:value
 })
 }
-onClickSignUp=event=>{
+onClickSignUp = async event=>{
 event.preventDefault();//Browser form elemanlarını bizim yerimize bir yere göndermesinin önüne geçmek için kullanılır.Bu sayede durdurmuş oluyoruz
 const user={
 username:this.state.username,
 displayName:this.state.displayName,
 password:this.state.password
-}
+};
+try{
 this.setState({pandingApiCall:true});
-axios.post('/api/1.0/users',user).then((response)=>{
+const response=await signup(user)
+}catch(error){
+}
 this.setState({pandingApiCall:false});
-}).catch(error=>{//javascript asenkron calışır backendten cevabı beklemeden diğer kod satırını işler bundan dolayı
-//istek sonrası işlemin gerçekleşip gerçekleşmediğini farklı şekilde axios sonrası catch ya da then ile yakalarız
-this.setState({pandingApiCall:false});
-});
+//
+//signup(user).then((response)=>{
+//this.setState({pandingApiCall:false});
+//}).catch(error=>{//javascript asenkron calışır backendten cevabı beklemeden diğer kod satırını işler bundan dolayı
+////istek sonrası işlemin gerçekleşip gerçekleşmediğini farklı şekilde axios sonrası catch ya da then ile yakalarız
+//this.setState({pandingApiCall:false});
+//});
 };
 
 
