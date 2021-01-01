@@ -67,7 +67,10 @@ render(){return(
   </div>
    <div className="form-group">
        <label>Password</label>
-       <input className="form-control" name="password" type="password" onChange={this.onChange}/>
+        <input  className={this.state.errors.password?"form-control is-invalid":"form-control"} type="password"  name="password" onChange={this.onChange}/>
+         <div class="invalid-feedback">
+              {this.state.errors.password}
+        </div>
    </div>
    <div className="form-group">
           <label>Repeat Password</label>
