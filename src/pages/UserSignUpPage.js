@@ -7,12 +7,16 @@ username:null,
 displayName:null,
 password:null,
 passwordRepeat:null,
-pandingApiCall:false
+pandingApiCall:false,
+errors:{}
 }
 onChange=event=>{
 const{name,value}=event.target
+const errors={...this.state.errors}//errors objesinin kopyesini aldık üç nokta ile
+errors[name]=undefined
 this.setState({
-[name]:value
+[name]:value,
+errors
 })
 }
 onClickSignUp = async event=>{
@@ -26,6 +30,10 @@ try{
 this.setState({pandingApiCall:true});
 const response=await signup(user)
 }catch(error){
+console.log(error.response.data);
+if(error.response.data.validationError){
+this.setState({errors:error.response.data.validationError})
+}
 }
 this.setState({pandingApiCall:false});
 //
@@ -45,7 +53,10 @@ render(){return(
   <h1 align= "center">Sign Up</h1>
   <div className="form-group">
    <label>Username</label>
-   <input className="form-control" name="username" onChange={this.onChange} />
+   <input className={this.state.errors.userName?"form-control is-invalid":"form-control"} name="username" onChange={this.onChange} />
+    <div class="invalid-feedback">
+    {this.state.errors.userName}
+         </div>
   </div>
   <div className="form-group">
      <label>Display Name</label>
