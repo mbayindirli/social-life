@@ -3,7 +3,7 @@ import {signup} from '../api/apiCalls'
 //class component(StateFull)Durum barındıran
 class UserSignUpPage extends React.Component{
 state={
-username:null,
+userName:null,
 displayName:null,
 password:null,
 passwordRepeat:null,
@@ -22,7 +22,7 @@ errors
 onClickSignUp = async event=>{
 event.preventDefault();//Browser form elemanlarını bizim yerimize bir yere göndermesinin önüne geçmek için kullanılır.Bu sayede durdurmuş oluyoruz
 const user={
-username:this.state.username,
+userName:this.state.userName,
 displayName:this.state.displayName,
 password:this.state.password
 };
@@ -53,14 +53,17 @@ render(){return(
   <h1 align= "center">Sign Up</h1>
   <div className="form-group">
    <label>Username</label>
-   <input className={this.state.errors.userName?"form-control is-invalid":"form-control"} name="username" onChange={this.onChange} />
+    <input className={this.state.errors.userName?"form-control is-invalid":"form-control"} name="userName" onChange={this.onChange} />
     <div class="invalid-feedback">
     {this.state.errors.userName}
-         </div>
+     </div>
   </div>
   <div className="form-group">
      <label>Display Name</label>
-     <input className="form-control" name="displayName" onChange={this.onChange}/>
+     <input  className={this.state.errors.displayName?"form-control is-invalid":"form-control"} name="displayName" onChange={this.onChange}/>
+   <div class="invalid-feedback">
+      {this.state.errors.displayName}
+       </div>
   </div>
    <div className="form-group">
        <label>Password</label>
