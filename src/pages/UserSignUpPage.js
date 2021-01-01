@@ -13,7 +13,16 @@ errors:{}
 onChange=event=>{
 const{name,value}=event.target
 const errors={...this.state.errors}//errors objesinin kopyesini aldık üç nokta ile
-errors[name]=undefined
+errors[name]=undefined;
+if(name==='password'||name==='passwordRepeat'){
+if(name==='password'&&value!==this.state.passwordRepeat){
+errors.passwordRepeat="Password Mismatch"
+}else if(name==='passwordRepeat'&&value!==this.state.password){
+errors.passwordRepeat="Password Mismatch"
+}else{
+errors.passwordRepeat=undefined;
+}
+}
 this.setState({
 [name]:value,
 errors
@@ -65,19 +74,22 @@ render(){return(
       {this.state.errors.displayName}
        </div>
   </div>
-   <div className="form-group">
-       <label>Password</label>
-        <input  className={this.state.errors.password?"form-control is-invalid":"form-control"} type="password"  name="password" onChange={this.onChange}/>
-         <div class="invalid-feedback">
-              {this.state.errors.password}
-        </div>
+  <div className="form-group">
+          <label>Password</label>
+          <input  className={this.state.errors.password?"form-control is-invalid":"form-control"} type="password"  name="password" onChange={this.onChange}/>
+           <div class="invalid-feedback">
+                        {this.state.errors.password}
+           </div>
    </div>
    <div className="form-group">
           <label>Repeat Password</label>
-          <input className="form-control" name ="passwordRepeat" type="password" onChange={this.onChange}/>
+          <input  className={this.state.errors.passwordRepeat?"form-control is-invalid":"form-control"} type="password"  name="passwordRepeat" onChange={this.onChange}/>
+           <div class="invalid-feedback">
+                        {this.state.errors.passwordRepeat}
+           </div>
    </div>
    <div className="text-center">
-    <button disabled={this.state.pandingApiCall} className="primary" onClick={this.onClickSignUp}>
+    <button disabled={this.state.pandingApiCall||this.state.errors.passwordRepeat!==undefined} className="primary" onClick={this.onClickSignUp}>
          {this.state.pandingApiCall?<span className="spinner-border spinner-border-sm"></span>:''}
          Sign Up
     </button>
