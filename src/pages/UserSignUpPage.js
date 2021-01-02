@@ -1,5 +1,5 @@
 import React from 'react';
-import {signup} from '../api/apiCalls'
+import {signup,changeLanguage} from '../api/apiCalls'
 import {withTranslation} from 'react-i18next';
 //class component(StateFull)Durum barındıran
 class UserSignUpPage extends React.Component{
@@ -14,6 +14,7 @@ errors:{}
 onChangeLanguage=language=>{
 const{i18n}=this.props;
 i18n.changeLanguage(language);
+changeLanguage(language);
 }
 onChange=event=>{
 const{name,value}=event.target
