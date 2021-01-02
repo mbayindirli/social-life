@@ -3,7 +3,7 @@ import {changeLanguage,login} from '../api/apiCalls'
 import {withTranslation} from 'react-i18next';
 class LoginPage extends React.Component{
 state={
-userName:null,
+username:null,
 password:null
 }
 
@@ -17,7 +17,7 @@ this.setState({
 onClickLogin=event=>{
 event.preventDefault();//form başka yerlere submit edilmesimesinin önüne geciliyor
 const creds={
-userName:this.state.userName,
+username:this.state.username,
 password:this.state.password
 };
 login(creds);
@@ -35,7 +35,7 @@ render(){return(
  <h1 align= "center">{this.props.t('Login')}</h1>
   <div className="form-group">
    <label>{this.props.t('Username')}</label>
-    <input className="form-control" name="userName" onChange={this.onChange}/>
+    <input className="form-control" name="username" onChange={this.onChange}/>
 
   </div>
 
