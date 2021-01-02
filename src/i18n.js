@@ -23,7 +23,7 @@ translations:{
 }
 }
 },
-fallbackLng:'tr',
+fallbackLng:'en',
 ns:['translations'],
 defaultNS:['translations'],
 keySeparator:false,
