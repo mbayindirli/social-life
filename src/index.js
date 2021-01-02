@@ -4,11 +4,12 @@ import './index.css';
 import './i18n';
 import './bootstrap-owerride.scss'
 import UserSignUpPage from './pages/UserSignUpPage';
+import LoginPage from'./pages/LoginPage'
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <UserSignUpPage />
+    <LoginPage />
   </React.StrictMode>,
   document.getElementById('root')
 );

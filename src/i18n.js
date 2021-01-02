@@ -9,7 +9,8 @@ en:{
 'Username':'Username',
 'Display Name':'Display Name',
 'Password':'Password',
-'Password Repeat':'Password Repeat'
+'Password Repeat':'Password Repeat',
+'Login':'Login'
   }
 },
 tr:{
@@ -19,7 +20,8 @@ translations:{
 'Username':'Kullanıcı Adı',
 'Display Name':'Gorünür Ad',
 'Password':'Şifre',
-'Password Repeat':'Şifre Tekrarı'
+'Password Repeat':'Şifre Tekrarı',
+'Login':'Giriş Yap'
 }
 }
 },
