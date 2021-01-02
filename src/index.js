@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import './i18n';
 import './bootstrap-owerride.scss'
 import UserSignUpPage from './pages/UserSignUpPage';
 import reportWebVitals from './reportWebVitals';
