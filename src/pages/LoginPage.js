@@ -71,8 +71,8 @@ return(
      </div>
 
       <div className="text-center">
-         <button disabled={this.state.pandinpApiCall} className="primary"onClick={this.onClickLogin}
-         disabled={!enableLoginButton}>
+         <button  className="primary"onClick={this.onClickLogin}
+         disabled={!enableLoginButton ||this.state.pandingApiCall}>
          {this.state.pandingApiCall?<span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>:''}
         {this.props.t('Login')}
          </button>
