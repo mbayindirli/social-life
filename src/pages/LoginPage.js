@@ -24,9 +24,11 @@ const creds={
 username:this.state.username,
 password:this.state.password
 };
+const {push}=this.props.history;
 try{
 this.setState({pandingApiCall:true})
 await login(creds);
+push("/");
 }catch(error){
 this.setState({
 error:error.response.data.message
