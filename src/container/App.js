@@ -36,14 +36,9 @@ class App extends React.Component {
           <TopBar username={username} isLoggedIn={isLoggedIn} onLogoutSuccess={this.onLogoutSuccess} />
           <Switch>
             <Route exact path="/" component={HomePage} />
-            {!isLoggedIn && (
-              <Route
-                path="/login"
-                component={props => {
-                  return <LoginPage {...props} onLoginSuccess={this.onLoginSuccess} />;
-                }}
-              />
-            )}
+            {!isLoggedIn&&<Route exact path="/login" component={(reactRouterProps)=>{
+            return < LoginPage {...reactRouterProps} onLoginSuccess={this.onLoginSuccess}/>;
+            }} />}
             <Route path="/signup" component={UserSignUpPage} />
             <Route path="/user/:username" component={UserPage} />
             <Redirect to="/" />
